@@ -19,3 +19,25 @@ To classify your text, send a POST request with the data you want to classify. B
 
 ```bash
 curl -s -XPOST "https://samanshrestha.ap-south-1.modelbit.com/v1/classifer_text/latest" -d '{"data": "Your data here"}' | json_pp
+```
+
+### Python Code
+
+```python
+import json
+import requests
+
+# Change `ENTER_WORKSPACE_NAME` to your workspace name
+response = requests.post(
+    "https://samanshrestha.ap-south-1.modelbit.com/v1/classifer_text/latest",
+    headers={"Content-Type": "application/json"},
+    data=json.dumps(
+        {
+            "data": [
+                "URGENT! You have won a 1 week FREE membership in our £100,000 Prize Jackpot! Txt the word: CLAIM",
+            ]
+        }
+    ),
+)
+
+print(response.json())
